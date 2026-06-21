@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="authScreen" class="auth-screen">
+      <div class="auth-card">
+        <h2 class="auth-card__heading">Masuk ke Tracker.io</h2>
+        <form id="authForm" class="auth-form" data-testid="authForm">
+          <div class="tracker-form__field">
+            <label class="tracker-form__label" for="authUsernameInput"
+              >Username</label
+            >
+            <input
+              type="text"
+              id="authUsernameInput"
+              data-testid="authUsernameInput"
+              class="tracker-form__input"
+              placeholder="Contoh: april_dian"
+              required
+            />
+          </div>
+          <div class="tracker-form__field">
+            <label class="tracker-form__label" for="authPasswordInput"
+              >Kata Sandi</label
+            >
+            <input
+              type="password"
+              id="authPasswordInput"
+              data-testid="authPasswordInput"
+              class="tracker-form__input"
+              placeholder="Minimal 6 karakter"
+              required
+            />
+          </div>
+          <div class="tracker-form__field hidden" id="authFullNameField">
+            <label class="tracker-form__label" for="authFullNameInput"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              id="authFullNameInput"
+              data-testid="authFullNameInput"
+              class="tracker-form__input"
+              placeholder="Contoh: April Dian Saputra"
+            />
+          </div>
+          <button
+            type="submit"
+            id="authSubmitButton"
+            class="tracker-form__submit"
+          >
+            Login
+          </button>
+          <p class="auth-form__toggle">
+            <span id="authModeText">Belum punya akun?</span>
+            <button
+              type="button"
+              id="toggleAuthMode"
+              class="auth-form__toggle-button"
+            >
+              Daftar
+            </button>
+          </p>
+          <p id="authMessage" class="auth-form__message" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="tracker-app tracker-app--hidden">
+      <header class="tracker-header">
+        <h1 class="tracker-header__title">
+          Tracker<span style="color: var(--accent-blue)">.io</span>
+        </h1>
+        <div class="tracker-header__user">
+          <div class="tracker-header__user-info">
+            <!-- TODO: Ganti "Siswa Front-End" dengan Nama Lengkap dan Username Dicoding kamu.
+               Contoh: Halo, <strong>Budi (bdi002)</strong> -->
+            <span class="tracker-header__greeting"
+              >Halo, <strong id="profileName">Pengguna</strong></span
+            >
+            <span id="profileFullName" class="tracker-header__fullname"
+              >Nama Lengkap</span
+            >
+            <div class="tracker-header__date-group">
+              <span class="tracker-header__filter-label">
+                Filter per bulan/tahun
+              </span>
+              <label for="monthSelect" class="tracker-header__select-label"
+                >Bulan</label
+              >
+              <select id="monthSelect" class="tracker-header__select"></select>
+              <label for="yearSelect" class="tracker-header__select-label"
+                >Tahun</label
+              >
+              <select id="yearSelect" class="tracker-header__select"></select>
+            </div>
+          </div>
+          <div
+            class="tracker-header__avatar"
+            role="img"
+            aria-label="Avatar Pengguna"
+            aria-hidden="true"
+          >
+            👤
+          </div>
+          <button
+            id="logoutButton"
+            class="tracker-header__logout hidden"
+            type="button"
+          >
+            Logout
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="tracker-summary" aria-labelledby="summary-heading">
+          <h2 id="summary-heading" class="visually-hidden">
+            Ringkasan Keuangan
+          </h2>
+
+          <div class="tracker-summary__balance">
+            <h3 class="tracker-summary__label">Saldo Saat Ini</h3>
+            <p class="tracker-summary__balance-amount">Rp 0</p>
+          </div>
+
+          <div class="tracker-summary__stat">
+            <h3 class="tracker-summary__label">Pemasukan</h3>
+            <p
+              class="tracker-summary__stat-amount tracker-summary__stat-amount--income"
+            >
+              Rp 0
+            </p>
+          </div>
+
+          <div class="tracker-summary__stat">
+            <h3 class="tracker-summary__label">Pengeluaran</h3>
+            <p
+              class="tracker-summary__stat-amount tracker-summary__stat-amount--expense"
+            >
+              Rp 0
+            </p>
+          </div>
+        </section>
+
+        <section class="tracker-form-section" aria-labelledby="form-heading">
+          <div class="tracker-form-section__card">
+            <h2 id="form-heading" class="tracker-form-section__heading">
+              Tambah Pencatatan Baru
+            </h2>
+
+            <form
+              id="transactionForm"
+              data-testid="transactionForm"
+              class="tracker-form"
+            >
+              <div class="tracker-form__field">
+                <label
+                  class="tracker-form__label"
+                  for="transactionFormTitleInput"
+                  >Keterangan</label
+                >
+                <input
+                  type="text"
+                  id="transactionFormTitleInput"
+                  data-testid="transactionFormTitleInput"
+                  class="tracker-form__input"
+                  placeholder="Misal: Makan siang..."
+                  required
+                />
+              </div>
+              <div class="tracker-form__field">
+                <label
+                  class="tracker-form__label"
+                  for="transactionFormAmountInput"
+                  >Nominal (Rp)</label
+                >
+                <input
+                  type="number"
+                  id="transactionFormAmountInput"
+                  data-testid="transactionFormAmountInput"
+                  class="tracker-form__input"
+                  placeholder="50000"
+                  min="1"
+                  required
+                />
+              </div>
+              <div class="tracker-form__field">
+                <label
+                  class="tracker-form__label"
+                  for="transactionFormDateInput"
+                  >Tanggal</label
+                >
+                <input
+                  type="date"
+                  id="transactionFormDateInput"
+                  data-testid="transactionFormDateInput"
+                  class="tracker-form__input"
+                  required
+                />
+              </div>
+              <div class="tracker-form__field">
+                <label
+                  class="tracker-form__label"
+                  for="transactionFormTypeSelect"
+                  >Klasifikasi</label
+                >
+                <select
+                  id="transactionFormTypeSelect"
+                  data-testid="transactionFormTypeSelect"
+                  class="tracker-form__input"
+                  required
+                >
+                  <option value="income">Uang Masuk (+)</option>
+                  <option value="expense">Uang Keluar (-)</option>
+                </select>
+              </div>
+              <button
+                type="submit"
+                id="transactionFormSubmitButton"
+                data-testid="transactionFormSubmitButton"
+                class="tracker-form__submit"
+              >
+                Simpan
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <section class="tracker-history" aria-labelledby="history-heading">
+          <h2 id="history-heading" class="visually-hidden">
+            Riwayat Transaksi
+          </h2>
+
+          <div class="tracker-search">
+            <form
+              id="searchTransactionForm"
+              data-testid="searchTransactionForm"
+              class="tracker-search__form"
+              role="search"
+            >
+              <input
+                type="search"
+                id="searchTransactionFormTitleInput"
+                data-testid="searchTransactionFormTitleInput"
+                class="tracker-form__input"
+                placeholder="Cari transaksi berdasarkan judul..."
+                aria-label="Kata kunci pencarian transaksi"
+              />
+              <button
+                type="submit"
+                data-testid="searchTransactionFormSubmitButton"
+                class="tracker-search__submit"
+                aria-label="Mulai Pencarian"
+              >
+                Cari
+              </button>
+            </form>
+          </div>
+
+          <div class="tracker-history__grid">
+            <div class="tracker-transaction-list">
+              <div class="tracker-transaction-list__header">
+                <h3 class="tracker-transaction-list__title">Arus Pemasukan</h3>
+              </div>
+              <!-- Jangan ubah atau hapus atribut data-testid pada elemen berikut -->
+              <div
+                id="incomeList"
+                data-testid="incomeList"
+                class="tracker-transaction-list__container"
+              >
+                <!-- Kartu transaksi pemasukan akan disisipkan di sini oleh JavaScript -->
+              </div>
+            </div>
+
+            <div class="tracker-transaction-list">
+              <div class="tracker-transaction-list__header">
+                <h3 class="tracker-transaction-list__title">
+                  Arus Pengeluaran
+                </h3>
+              </div>
+              <!-- Jangan ubah atau hapus atribut data-testid pada elemen berikut -->
+              <div
+                id="expenseList"
+                data-testid="expenseList"
+                class="tracker-transaction-list__container"
+              >
+                <!-- Kartu transaksi pengeluaran akan disisipkan di sini oleh JavaScript -->
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="tracker-footer">
+        <p>
+          &#169; 2026 Tracker.io. Disusun sebagai Starter Project Submission
+          Front-End Web.
+        </p>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
