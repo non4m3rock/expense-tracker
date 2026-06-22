@@ -6,71 +6,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-page-1: #070717;
-  --bg-page-2: #0b0f1a;
-  --bg-page: linear-gradient(
-    180deg,
-    var(--bg-page-1) 0%,
-    var(--bg-page-2) 100%
-  );
-  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-page: #f6f7f9;
+  --bg-card: #ffffff;
 
-  --text-dark: #e6f7ff;
-  --text-muted: rgba(230, 247, 255, 0.55);
+  --text-dark: #09090b;
+  --text-muted: #71717a;
 
-  --accent-cyan: #00e5ff;
-  --accent-glow: rgba(0, 229, 255, 0.14);
+  --accent-blue: #2563eb;
+  --accent-light: #eff6ff;
 
-  --color-income: #6ef0c3;
-  --bg-income: rgba(110, 240, 195, 0.06);
-  --color-expense: #ff6b9f;
-  --bg-expense: rgba(255, 107, 159, 0.05);
+  --color-income: #10b981;
+  --bg-income: #ecfdf5;
+  --color-expense: #f43f5e;
+  --bg-expense: #fff1f2;
 
-  --border-light: rgba(255, 255, 255, 0.06);
+  --border-light: #e4e4e7;
 
   --font-family: 'Outfit', sans-serif;
-  --card-radius: 12px;
-  --card-padding: 18px;
+  --card-radius: 20px;
+  --card-padding: 24px;
 }
-
-/* Theme overrides */
-.light-mode {
-  --bg-page-1: #f6f7f9;
-  --bg-page-2: #ffffff;
-  --bg-page: linear-gradient(
-    180deg,
-    var(--bg-page-1) 0%,
-    var(--bg-page-2) 100%
-  );
-  --bg-card: #ffffff;
-  --text-dark: #0b1220;
-  --text-muted: #6b7280;
-  --accent-cyan: #2563eb;
-  --accent-glow: rgba(37, 99, 235, 0.08);
-  --color-income: #0ea5a4;
-  --color-expense: #ef4444;
-  --border-light: #e6e6e9;
-}
-
-.warm-mode {
-  --bg-page-1: #f7efe6;
-  --bg-page-2: #fff7ef;
-  --bg-page: linear-gradient(
-    180deg,
-    var(--bg-page-1) 0%,
-    var(--bg-page-2) 100%
-  );
-  --bg-card: rgba(15, 10, 7, 0.03);
-  --text-dark: #2b2b20;
-  --text-muted: rgba(43, 43, 32, 0.65);
-  --accent-cyan: #ffb66b;
-  --accent-glow: rgba(255, 182, 107, 0.1);
-  --color-income: #6ea25f;
-  --color-expense: #d5483d;
-  --border-light: rgba(0, 0, 0, 0.06);
-}
-
-/* dark-mode uses default variables; no overrides needed */
 
 * {
   margin: 0;
@@ -79,14 +34,13 @@
 }
 
 body {
-  background: var(--bg-page);
+  background-color: var(--bg-page);
   color: var(--text-dark);
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   padding: 1.5rem;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
 }
 
 /* =========================================================
@@ -112,69 +66,13 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.75rem;
 }
 
 .tracker-app main {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.auth-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: var(--bg-page);
-}
-
-.auth-card {
-  width: 100%;
-  max-width: 420px;
-  background: var(--bg-card);
-  border-radius: var(--card-radius);
-  border: 1px solid var(--border-light);
-  padding: 1.5rem;
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.45),
-    0 0 24px var(--accent-glow);
-  backdrop-filter: blur(6px);
-}
-
-.auth-card__heading {
-  margin-bottom: 1.25rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.auth-form__toggle {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.auth-form__toggle-button {
-  border: none;
-  background: none;
-  color: var(--accent-cyan);
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.auth-form__message {
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-}
-
-.auth-form__message--error {
-  color: var(--color-expense);
+  gap: 1.75rem;
 }
 
 /* Kartu dasar yang dipakai bersama di semua section */
@@ -183,18 +81,13 @@ body {
 .tracker-form-section__card,
 .tracker-search,
 .tracker-transaction-list {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
+  background: var(--bg-card);
   border-radius: var(--card-radius);
   border: 1px solid var(--border-light);
   padding: var(--card-padding);
   display: flex;
   flex-direction: column;
   min-width: 0;
-  backdrop-filter: blur(6px);
 }
 
 /* =========================================================
@@ -204,110 +97,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
 }
 
 .tracker-header__title {
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-dark);
-  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .tracker-header__user {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.85rem;
 }
 
 .tracker-header__user-info {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.15rem;
 }
 
 .tracker-header__greeting {
   font-size: 0.95rem;
   color: var(--text-dark);
-}
-.tracker-header__fullname {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-bottom: 0.2rem;
-}
-
-.tracker-header__date-group {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  gap: 0.3rem 0.4rem;
-  align-items: center;
-}
-
-.tracker-header__filter-label {
-  font-size: 0.75rem;
-  color: var(--text-dark);
-  font-weight: 600;
-  margin-bottom: 0.15rem;
-}
-
-.tracker-header__select-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
-
-.tracker-header__select {
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.02);
-  padding: 0.4rem 0.6rem;
-  min-width: 90px;
-  font-size: 0.92rem;
-  color: var(--text-dark);
-  outline: none;
-}
-@media (max-width: 768px) {
-  .tracker-header__title {
-    font-size: 1.35rem;
-  }
-
-  .tracker-header__user {
-    gap: 0.35rem;
-  }
-
-  .tracker-header__fullname,
-  .tracker-header__filter-label,
-  .tracker-header__select-label {
-    font-size: 0.75rem;
-  }
-
-  .tracker-header__date-group {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.35rem;
-  }
-
-  /* Place month/year directly under the username on small screens */
-  .tracker-header__user-info {
-    align-items: flex-start;
-  }
-
-  .tracker-header__date-group {
-    margin-top: 0.25rem;
-    width: auto;
-  }
-
-  .tracker-header__select {
-    min-width: 0;
-    width: 100%;
-    padding: 0.4rem 0.55rem;
-  }
-}
-.tracker-header__fullname {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
 }
 
 .tracker-header__date {
@@ -334,7 +147,7 @@ body {
 .tracker-summary {
   display: grid;
   grid-template-columns: 2fr 1.25fr 1.25fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .tracker-summary__label {
@@ -343,7 +156,7 @@ body {
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .tracker-summary__balance {
@@ -388,20 +201,20 @@ body {
   text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .tracker-form {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr auto;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: end;
 }
 
 .tracker-form__field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .tracker-form__label {
@@ -412,42 +225,42 @@ body {
 
 .tracker-form__input {
   width: 100%;
-  padding: 0.65rem 0.9rem;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: #fcfcfc;
   font-family: inherit;
   font-size: 0.95rem;
   outline: none;
-  transition:
-    box-shadow 0.18s,
-    transform 0.08s;
+  transition: border-color 0.2s;
 }
 
 .tracker-form__input:focus {
-  box-shadow: 0 6px 20px var(--accent-glow);
-  transform: translateY(-1px);
+  border-color: var(--accent-blue);
+  background: var(--bg-card);
 }
 
 .tracker-form__submit {
-  background: linear-gradient(90deg, var(--accent-cyan), #7af0ff);
-  color: rgba(4, 12, 18, 0.95);
+  background: var(--text-dark);
+  color: #fff;
   border: none;
-  padding: 0.65rem 1.05rem;
-  height: 40px;
-  border-radius: 10px;
+  padding: 0.85rem 1.5rem;
+  height: 44px;
+  border-radius: 12px;
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 6px 22px var(--accent-glow);
   transition:
-    transform 0.12s,
-    box-shadow 0.12s;
+    transform 0.1s,
+    opacity 0.2s;
 }
 
 .tracker-form__submit:hover {
-  transform: translateY(-2px);
+  opacity: 0.85;
+}
+.tracker-form__submit:active {
+  transform: scale(0.98);
 }
 
 /* =========================================================
@@ -456,16 +269,16 @@ body {
 .tracker-history {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.5rem;
 }
 
 .tracker-search {
-  padding: 0.85rem 1rem;
+  padding: 1.25rem 1.5rem;
 }
 
 .tracker-search__form {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .tracker-search__form .tracker-form__input {
@@ -476,7 +289,7 @@ body {
 .tracker-search__submit {
   background: var(--bg-page);
   border: 1px solid var(--border-light);
-  padding: 0 1.2rem;
+  padding: 0 1.5rem;
   border-radius: 12px;
   font-family: inherit;
   font-weight: 600;
@@ -494,13 +307,13 @@ body {
 .tracker-history__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .tracker-transaction-list__header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .tracker-transaction-list__title {
@@ -514,7 +327,7 @@ body {
 .tracker-transaction-list__container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 /* =========================================================
@@ -620,24 +433,21 @@ body {
    TRACKER TRANSACTION CARD — KARTU TRANSAKSI YANG DI-GENERATE
    ========================================================= */
 .transaction-card {
-  padding: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--bg-card);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.75rem;
   transition:
-    box-shadow 0.18s,
-    transform 0.12s;
-  backdrop-filter: blur(4px);
+    box-shadow 0.2s,
+    border-color 0.2s;
 }
 
 .transaction-card:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.6),
-    0 0 22px var(--accent-glow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-blue);
 }
 
 .transaction-card h3 {
@@ -655,30 +465,28 @@ body {
 
 .transaction-card__actions {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
 }
 
 .transaction-card__button {
-  padding: 0.5rem 0.85rem;
+  padding: 0.6rem 1rem;
   border: none;
   border-radius: 8px;
   font-family: inherit;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.85rem;
   cursor: pointer;
-  transition:
-    transform 0.12s,
-    box-shadow 0.12s;
+  transition: all 0.2s ease;
   outline: none;
   flex: 1;
-  min-width: 90px;
+  min-width: 100px;
 }
 
 .transaction-card__button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .transaction-card__button:active {
@@ -687,23 +495,32 @@ body {
 
 /* Button Edit — Biru */
 .transaction-card__button--edit {
-  background: linear-gradient(90deg, var(--accent-cyan), #7af0ff);
-  color: rgba(4, 12, 18, 0.95);
-  box-shadow: 0 8px 28px var(--accent-glow);
+  background: var(--accent-blue);
+  color: white;
+}
+
+.transaction-card__button--edit:hover {
+  background: #1d4ed8;
 }
 
 /* Button Hapus — Merah */
 .transaction-card__button--delete {
-  background: transparent;
-  color: var(--color-expense);
-  border: 1px solid rgba(255, 107, 159, 0.12);
+  background: var(--color-expense);
+  color: white;
+}
+
+.transaction-card__button--delete:hover {
+  background: #e11d48;
 }
 
 /* Button Toggle Type — Hijau/Oranye */
 .transaction-card__button--toggle {
-  background: transparent;
-  color: var(--color-income);
-  border: 1px solid rgba(110, 240, 195, 0.12);
+  background: var(--color-income);
+  color: white;
+}
+
+.transaction-card__button--toggle:hover {
+  background: #059669;
 }
 
 /* =========================================================
@@ -793,24 +610,6 @@ body {
   .tracker-form__submit {
     width: 100%;
     margin-top: 0.5rem;
-  }
-
-  .tracker-search {
-    padding: 0.8rem 1rem;
-  }
-
-  .tracker-search__form {
-    gap: 0.6rem;
-  }
-
-  .tracker-search__submit {
-    padding: 0.8rem;
-  }
-  .tracker-summary {
-    gap: 0.85rem;
-  }
-  .tracker-history {
-    gap: 0.6rem;
   }
 
   .tracker-history__grid {

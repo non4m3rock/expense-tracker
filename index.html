@@ -7,71 +7,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="authScreen" class="auth-screen">
-      <div class="auth-card">
-        <h2 class="auth-card__heading">Masuk ke Tracker.io</h2>
-        <form id="authForm" class="auth-form" data-testid="authForm">
-          <div class="tracker-form__field">
-            <label class="tracker-form__label" for="authUsernameInput"
-              >Username</label
-            >
-            <input
-              type="text"
-              id="authUsernameInput"
-              data-testid="authUsernameInput"
-              class="tracker-form__input"
-              placeholder="Contoh: april_dian"
-              required
-            />
-          </div>
-          <div class="tracker-form__field">
-            <label class="tracker-form__label" for="authPasswordInput"
-              >Kata Sandi</label
-            >
-            <input
-              type="password"
-              id="authPasswordInput"
-              data-testid="authPasswordInput"
-              class="tracker-form__input"
-              placeholder="Minimal 6 karakter"
-              required
-            />
-          </div>
-          <div class="tracker-form__field hidden" id="authFullNameField">
-            <label class="tracker-form__label" for="authFullNameInput"
-              >Nama Lengkap</label
-            >
-            <input
-              type="text"
-              id="authFullNameInput"
-              data-testid="authFullNameInput"
-              class="tracker-form__input"
-              placeholder="Contoh: April Dian Saputra"
-            />
-          </div>
-          <button
-            type="submit"
-            id="authSubmitButton"
-            class="tracker-form__submit"
-          >
-            Login
-          </button>
-          <p class="auth-form__toggle">
-            <span id="authModeText">Belum punya akun?</span>
-            <button
-              type="button"
-              id="toggleAuthMode"
-              class="auth-form__toggle-button"
-            >
-              Daftar
-            </button>
-          </p>
-          <p id="authMessage" class="auth-form__message" aria-live="polite"></p>
-        </form>
-      </div>
-    </div>
-
-    <div class="tracker-app tracker-app--hidden">
+    <div class="tracker-app">
       <header class="tracker-header">
         <h1 class="tracker-header__title">
           Tracker<span style="color: var(--accent-blue)">.io</span>
@@ -81,24 +17,10 @@
             <!-- TODO: Ganti "Siswa Front-End" dengan Nama Lengkap dan Username Dicoding kamu.
                Contoh: Halo, <strong>Budi (bdi002)</strong> -->
             <span class="tracker-header__greeting"
-              >Halo, <strong id="profileName">Pengguna</strong></span
+              >Halo,
+              <strong>April Dian Saputra (april_dian_saputra) </strong></span
             >
-            <span id="profileFullName" class="tracker-header__fullname"
-              >Nama Lengkap</span
-            >
-            <div class="tracker-header__date-group">
-              <span class="tracker-header__filter-label">
-                Filter per bulan/tahun
-              </span>
-              <label for="monthSelect" class="tracker-header__select-label"
-                >Bulan</label
-              >
-              <select id="monthSelect" class="tracker-header__select"></select>
-              <label for="yearSelect" class="tracker-header__select-label"
-                >Tahun</label
-              >
-              <select id="yearSelect" class="tracker-header__select"></select>
-            </div>
+            <span class="tracker-header__date">Bulan Ini</span>
           </div>
           <div
             class="tracker-header__avatar"
@@ -108,13 +30,6 @@
           >
             👤
           </div>
-          <button
-            id="logoutButton"
-            class="tracker-header__logout hidden"
-            type="button"
-          >
-            Logout
-          </button>
         </div>
       </header>
 

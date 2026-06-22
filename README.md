@@ -1,6 +1,6 @@
 # Expense Tracker App — Starter Project
 
-Selamat datang di *starter project* submission kelas **Front-End Web Pemula**! 🎉
+Selamat datang di _starter project_ submission kelas **Front-End Web Pemula**! 🎉
 
 Proyek ini sudah dilengkapi dengan tampilan HTML dan CSS yang siap pakai. Tugas Anda adalah melengkapi logika JavaScript-nya di berkas `main.js` agar aplikasi berfungsi sepenuhnya.
 
@@ -23,6 +23,7 @@ expense-tracker-starter-project/
 Proyek ini adalah HTML statis, sehingga tidak memerlukan instalasi apapun.
 
 **Opsi 1 (Disarankan):** Gunakan ekstensi **Live Server** di VS Code.
+
 1. Klik kanan pada `index.html`
 2. Pilih **"Open with Live Server"**
 3. Browser akan terbuka otomatis di `http://127.0.0.1:5500`
